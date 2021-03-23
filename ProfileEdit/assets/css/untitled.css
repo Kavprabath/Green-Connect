@@ -1,0 +1,26 @@
+.navbar-brand {
+  display: inline-block;
+  padding-top: .3125rem;
+  padding-bottom: .3125rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+#home {
+  max-height: 40px;
+}
+
+#notification {
+  max-height: 40px;
+}
+
+#settings {
+  max-height: 40px;
+}
+
+#dropdown {
+  max-height: 40px;
+}
+
