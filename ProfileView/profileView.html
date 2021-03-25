@@ -38,7 +38,13 @@
         </div>
     </nav>
     <div class="profile-card" style="background: var(--light);border-color: rgba(33,37,41,0);">
-        <div class="profile-back" style="color: var(--dark);background: url(&quot;assets/img/20200217_154254.jpg&quot;) center / cover no-repeat, var(--blue);height: 297px;"></div><img class="rounded-circle profile-pic" src="assets/img/IMG-20200217-WA0065-01.jpeg" style="width: 170px;height: 170px;" width="160px" height="160px" alt="Image">
+        <div class="profile-back" style="color: var(--dark);background: url(&quot;assets/img/20200217_154254.jpg&quot;) center / cover no-repeat, var(--blue);height: 297px;"></div><img id="myImg" class="rounded-circle profile-pic" src="assets/img/IMG-20200217-WA0065-01.jpeg" style="width: 170px;height: 170px;" width="160px" height="160px" alt="Profile Picture">
+        <!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
         <h5 class="profile-name" style="color: rgb(0,0,0);font-size: 38px;background: rgba(155,31,31,0);">Kavprabath<i class="fa fa-star border-dark" style="padding-left: 0px;margin-right: -60px;margin-left: 15px;border-width: 2px;border-color: rgb(103,248,53);color: rgb(18,255,27);background: rgba(255,255,255,0);"></i></h5><a href="../ProfileEdit/index.html"><button class="btn btn-primary" data-toggle="modal" data-target="#modal1" type="button" style="margin-top: 0px;margin-right: 0px;width: 146px;height: 50px;font-size: 22px;background: rgba(0,0,0,0);color: rgb(0,0,0);border-width: 2px;border-color: rgb(0,0,0);"><strong>Edit Profile</strong></button></a>
         <ul class="social-list"></ul>
     </div>
@@ -66,6 +72,7 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
+     <script src="assets/js/script.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
 </body>
