@@ -133,3 +133,38 @@ body {
   background-color: #666;
   color: white;
 }
+#nav-color {
+    background-color: #C6C6C6;
+}
+
+.GConnect_Logo {
+    width: 4rem;
+
+}
+
+#site-search {
+    display: ;
+}
+
+/* User Profile Image Rounding */
+.user-image {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+}
+
+.user-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 10px ;
+}
+
+.btn-right{
+    width: 3rem;
+    height: 3rem;
+}
+
+.section-retain {
+    background-color: #0A0A52;
+    height: 200vh;
+}
