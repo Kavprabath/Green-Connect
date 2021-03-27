@@ -45,23 +45,56 @@ h1,h2,h3 {
 
 /* User Profile Image Rounding */
 .user-image {
-    width: 5rem;
-    height: 5rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
 }
 
 .user-name {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
-    margin-left: 10px ;
+    margin-left: 5px ;
 }
 
 .btn-right{
-    width: 3rem;
-    height: 3rem;
+    width: 2rem;
+    height: 2rem;
 }
 
 .section-retain {
     background-color: #0A0A52;
     height: 200vh;
 }
+
+/* Navbar Layout Position */
+.navbar-logo-G {
+    position: relative;
+    left: -30px;
+}
+
+.nav-search-G {
+    position: relative;
+    left: -45px;
+}
+
+.nav-icons-G {
+    position: relative;
+    left: -20px;
+
+}
+
+.container-flex-right{
+    
+    width: 100px;
+    display: inline-flex;
+    justify-content: space-between;
+    position: relative;
+    left: 60px
+}
+
+.user-badge {
+    position: relative;
+    left: 70px;
+}
+
+
