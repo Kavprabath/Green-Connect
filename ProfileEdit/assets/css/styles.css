@@ -1,5 +1,6 @@
-#logo {
+#logo{
   max-height: 70px;
+  padding-bottom: 4px;
 }
 
 #search {
@@ -7,34 +8,69 @@
 }
 
 #camera1{
-  
+  width: 30px;
+  padding-top: 21px;
 }
 
 #camera2{
-  background-color: springgreen;
+  width: 30px;
+  padding-top: 21px;
+}
+
+#search-bar{
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  width: 254px;
+}
+
+.navbar-brand{
+  font-family: ABeeZee, sans-serif;
+}
+
+.search-bar{
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background: rgb(77,78,79);
+  padding: 2px 12px;
+  padding-left: 12px;
+  margin-left: 7px;
+  color: rgb(242,239,239);
+}
+
+#file{
+  display: none;
+}
+
+.cover-page{
+  background-color: aqua;
+  width: 767px;
+  height: 290px;
+}
+
+.cover-pic{
+  position: absolute;
+  width: 767px;
+  height: 291px;
+  left: 567px;
+  top: 272px;
+}
+
+.cover-choose-pic{
+  background-color: rgba(44, 42, 42, 0.815);
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   border-radius: 100px;
-  border: 2px solid snow;
-  top: 550px;
-  left: 1300px;
-  transform: translate(-50px,-50px);
+  top: 500px;
+  left: 1250px;
   width: 50px;
   height: 50px;
-}
-
-.cover-page{
-  background-color: aqua;
-  width: 40vw;
-  height: 30vh;
-}
-
-.cover-pic{
-  width: 767px;
-  height: 300px;
-  position: absolute;
+  filter: blur(0.7px);
 }
 
 .tbody{
@@ -54,8 +90,6 @@
 }
 
 .profile-pic{
-  /* background-color: blue; */
-  background-image: url(assets/img/pngegg.png);
   background-size: cover;
   border: 2px solid snow;
   position: absolute;
@@ -79,23 +113,25 @@
 }
 
 .profile-choose-pic{
-  background-color: springgreen;
+  background-color: rgba(255, 255, 255, 0.719);
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   border-radius: 100px;
-  border: 2px solid snow;
-  top: 580px;
-  left: 1000px;
+  border: 1px solid rgb(39, 38, 38);
+  top: 610px;
+  left: 1020px;
   transform: translate(-50px,-50px);
   width: 50px;
   height: 50px;
+  filter: blur(0.7px);
 }
 
 .contact-clean {
   background: #f1f7fc;
   padding: 80px 0;
+  background: #0a0a52;
 }
 
 @media (max-width:767px) {
@@ -113,6 +149,10 @@
   border-radius: 4px;
   color: #505e6c;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+}
+
+#form{
+  max-width: 849px;
 }
 
 @media (max-width:767px) {
@@ -207,5 +247,18 @@
 
 #dropdown {
   max-height: 40px;
+}
+/*
+.update-btn{
+  background-color: #055ada !important;
+  margin-top: 15px;
+  color: #fff;
+}
+}
+
+.cancel-btn{
+  background: linear-gradient(white, rgb(235,235,235) 100%, black 100%),rgb(255,255,255);
+  color: rgb(0,0,0);
+  border-color: rgb(0,0,0);
 }
 

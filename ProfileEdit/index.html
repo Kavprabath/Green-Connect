@@ -14,8 +14,10 @@
 
 <body id="logo">
     <nav class="navbar navbar-light navbar-expand-md" style="background: #c6c6c6;height: 78px;">
-        <div class="container-fluid"><img id="logo" src="assets/img/Green_Connect_Logo.png" style="padding-bottom: 4px;"><a class="navbar-brand" href="#" style="font-family: ABeeZee, sans-serif;">Green Connect</a><button data-toggle="collapse" class="navbar-toggler" data-target="#search"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="search"><input type="search" style="border-top-left-radius: 15px;border-top-right-radius: 15px;border-bottom-right-radius: 15px;border-bottom-left-radius: 15px;width: 254px;"><button class="btn btn-primary" type="button" style="border-top-left-radius: 20px;border-top-right-radius: 20px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;background: rgb(77,78,79);padding: 2px 12px;padding-left: 12px;margin-left: 7px;color: rgb(242,239,239);">Search</button>
+        <div class="container-fluid"><img id="logo" src="assets/img/Green_Connect_Logo.png"><a class="navbar-brand" href="#">Green Connect</a><button data-toggle="collapse" class="navbar-toggler" data-target="#search"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="search">
+                <input id="search-bar" type="search">
+                <button class="search-bar" type="button">Search</button>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link active" href="#"></a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><img id="home" src="assets/img/baseline_home_black_48dp.png"></a></li>
@@ -26,23 +28,39 @@
             </div>
         </div>
     </nav>
-    <section class="contact-clean" style="background: #0a0a52;">
-        <form method="post" style="max-width: 849px;">
+
+
+    <section class="contact-clean">
+        <form id="form" method="post">
             <h2 class="text-center">Edit Profile</h2>
             <div class="table-responsive">
-                <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
+                <input type="file"  accept="image/*" name="image" id="file" onchange="loadFile(event)">
                 <table class="table">
                     <div class="cover-page">
-                        <p><label for="file" style="cursor: pointer;"><img id="camera2" src="assets/img/camera.png" style="width: 50px; padding: 7px;" alt=""></label></p>
-                        <img class="cover-pic" id="output" width="767px"; height="300"; style="position: absolute; top: ;">
+                        <img class="cover-pic" id="output2" width="200">
+                            <div class="cover-choose-pic">
+                                <p>
+                                    <label for="file" style="cursor: pointer;">
+                                        <img id="camera2" src="assets/img/camera2.png">
+                                        
+                                    </label>
+                                </p>    
+                            </div>
+                        
+
                         <div class="profile-pic">
-                            <img class="avatar" src="assets/img/pngegg.png" alt="">
+                            <img class="avatar" src="assets/img/pngegg.png">
                             <img class="pro-pic" id="output" width="200">
                         </div>
                         <div class="profile-choose-pic">
-                            <p><label for="file" style="cursor: pointer;"><img id="camera1" style="width: 30px; padding-top: 21px;" src="assets/img/camera.png" alt=""></label></p>
+                            <p>
+                                <label for="file" style="cursor: pointer;">
+                                    <img id="camera1" src="assets/img/camera1.png">
+                                </label>
+                            </p>
                         </div>
                     </div>
+                    
                     <tbody class="tbody">
                         <br>
                         <br>
@@ -119,7 +137,13 @@
     </section>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <input type="file"  accept="image/*" name="image" id="file" style="display: none;">
+    <input type="file"  accept="image/gif, image/jpeg, image/png" name="image" id="file" style="display: none;">
+    <script>
+        var loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
     <script>
         var loadFile = function(event) {
             var image = document.getElementById('output');
