@@ -201,6 +201,57 @@ h1,h2,h3 {
       left: 30px;
   }
 
+  /* User Right Follow Card */
+  
+  .card-right-follow {
+    width: 20vw;
+    height: 40vh;
+    background-color: #FFFFFF;
+    box-shadow: 5px 5px 5px black;
+    border-radius: 5px;
+    position: relative;
+    left: 75vw;
+    bottom: 45vh;
+}
+
+.card-label-follow {
+    position: relative;
+    top: 20px;
+    left: 10px;
+}
+
+.right-card-name {
+    position: relative;
+    left: 50px;
+    font-weight: bold;
+}
+
+/* Thin black border */
+.horizontal-thick-right {
+    border: 1px solid black;
+    position: relative;
+    top: 20px;
+
+  }
+
+  /* Follow Button Section */
+  .btn {
+      position: relative;
+      left: 80px;
+      
+  }
+
+  .btn-block {
+      position: relative;
+      top: 20px;
+      left: 50px;
+      width: 20rem;
+  }
+
+  
+
+
+
 
 
 
