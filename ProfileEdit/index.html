@@ -1,154 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
     <title>Green Connect Edit Profile</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
-    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/untitled.css">
-</head>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=ABeeZee"
+    />
+    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/untitled.css" />
+  </head>
 
-<body id="logo">
-    <nav class="navbar navbar-light navbar-expand-md" style="background: #c6c6c6;height: 78px;">
-        <div class="container-fluid"><img id="logo" src="assets/img/Green_Connect_Logo.png"><a class="navbar-brand" href="#">Green Connect</a><button data-toggle="collapse" class="navbar-toggler" data-target="#search"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="search">
-                <input id="search-bar" type="search">
-                <button class="search-bar" type="button">Search</button>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#"></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><img id="home" src="assets/img/baseline_home_black_48dp.png"></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><img id="notification" src="assets/img/baseline_notifications_black_48dp.png"></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><img id="settings" src="assets/img/baseline_settings_black_48dp.png"></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><img id="dropdown" src="assets/img/baseline_arrow_drop_down_black_48dp.png"></a></li>
-                </ul>
-            </div>
+  <body id="logo">
+    <nav
+      class="navbar navbar-light navbar-expand-md"
+      style="background: #c6c6c6; height: 78px"
+    >
+      <div class="container-fluid">
+        <img id="logo" src="assets/img/Green_Connect_Logo.png" /><a
+          class="navbar-brand"
+          href="#"
+          >Green Connect</a
+        ><button
+          data-toggle="collapse"
+          class="navbar-toggler"
+          data-target="#search"
+        >
+          <span class="sr-only">Toggle navigation</span
+          ><span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="search">
+          <input id="search-bar" type="search" />
+          <button class="search-bar" type="button">Search</button>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link active" href="#"></a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><img id="home" src="assets/img/baseline_home_black_48dp.png"
+              /></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><img
+                  id="notification"
+                  src="assets/img/baseline_notifications_black_48dp.png"
+              /></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><img
+                  id="settings"
+                  src="assets/img/baseline_settings_black_48dp.png"
+              /></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><img
+                  id="dropdown"
+                  src="assets/img/baseline_arrow_drop_down_black_48dp.png"
+              /></a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
-
     <section class="contact-clean">
-        <form id="form" method="post">
-            <h2 class="text-center">Edit Profile</h2>
-            <div class="table-responsive">
-                <input type="file"  accept="image/*" name="image" id="file" onchange="loadFile(event)">
-                <table class="table">
-                    <div class="cover-page">
-                        <img class="cover-pic" id="output2" width="200">
-                            <div class="cover-choose-pic">
-                                <p>
-                                    <label for="file" style="cursor: pointer;">
-                                        <img id="camera2" src="assets/img/camera2.png">
-                                        
-                                    </label>
-                                </p>    
-                            </div>
-                        
+      <form id="form" method="post">
+        <h2 class="text-center">Edit Profile</h2>
+        <div class="table-responsive">
+          <input
+            type="file"
+            accept="image/*"
+            name="image"
+            id="file"
+            onchange="loadFile(event)"
+          />
+          <input
+            type="file"
+            accept="image/*"
+            name="image"
+            id="file"
+            onchange="loadFile2(event)"
+          />
+          <table class="table">
+            <div class="cover-page">
+              <img class="cover-pic" id="output2" width="200" />
+              <div class="cover-choose-pic">
+                <p>
+                  <label for="file" style="cursor: pointer">
+                    <img id="camera2" src="assets/img/camera2.png" />
+                  </label>
+                </p>
+              </div>
 
-                        <div class="profile-pic">
-                            <img class="avatar" src="assets/img/pngegg.png">
-                            <img class="pro-pic" id="output" width="200">
-                        </div>
-                        <div class="profile-choose-pic">
-                            <p>
-                                <label for="file" style="cursor: pointer;">
-                                    <img id="camera1" src="assets/img/camera1.png">
-                                </label>
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <tbody class="tbody">
-                        <br>
-                        <br>
-                        <br>
-                        <tr>
-                            <td>FIrst Name</td>
-                            <td><input class="form-control" type="text"></td>
-                        </tr>
-                        <tr>
-                            <td>Last Name</td>
-                            <td><input class="form-control" type="text"></td>
-                        </tr>
-                        <tr>
-                            <td>Date of Birth</td>
-                            <td><input class="form-control" type="date"></td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td><input type="radio" name="Gender"> Male <input type="radio" name="Gender"> Female</td>
-                        </tr>
+              <div class="profile-pic">
+                <img class="avatar" src="assets/img/pngegg.png" />
+                <img class="pro-pic" id="output" width="200" />
+              </div>
+              <div class="profile-choose-pic">
+                <p>
+                  <label for="file" style="cursor: pointer">
+                    <img id="camera1" src="assets/img/camera1.png" />
+                  </label>
+                </p>
+              </div>
+            </div>
 
-                        <tr>
-                            <td>Batch</td>
-				            <td>
-					            <select>
-						            <option>--</option>
-						            <option>19.1</option>
-						            <option>19.2</option>
-					            </select>
-				            </td>
-                        </tr>
-                        <tr>
-                            <td>Faculty</td>
-				            <td>
-					            <select>
-                                    <option>--</option>
-						            <option>Faculty of Business</option>
-						            <option>Faculty of Computing</option>
-						            <option>Faculty of Engineering</option>
-					            </select>
-				            </td>
-                        </tr>
-                        <tr>
-                            <td>Country</td>
-				            <td>
-					            <select>
-                                    <option>--</option>
-						            <option>Sri Lanka</option>
-						            <option>USA</option>
-                                    <option>India</option>
-					            </select>
-				            </td>
-                        </tr>
-                        <tr>
-                            <td>Phone Number</td>
-                            <td><input class="form-control" placeholder="Phone Number" type="text"></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td><input type="email" placeholder="Email" class="form-control" /></td>
-                        </tr>
-                        <tr>
-                            <td>Password</td>
-                            <td><input class="form-control" type="password"></td>
-                        </tr>
-                        <tr>
-                            <td>Confirm Password</td>
-                            <td><input class="form-control" type="password"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div><button class="btn btn-primary" type="submit">update</button><button class="btn btn-primary" type="button" style="background: linear-gradient(white, rgb(235,235,235) 100%, black 100%), rgb(255,255,255);color: rgb(0,0,0);border-color: rgb(0,0,0);">cancel</button>
-        </form>
+            <tbody class="tbody">
+              <br />
+              <br />
+              <br />
+              <tr>
+                <td>FIrst Name</td>
+                <td><input class="form-control" type="text" /></td>
+              </tr>
+              <tr>
+                <td>Last Name</td>
+                <td><input class="form-control" type="text" /></td>
+              </tr>
+              <tr>
+                <td>Date of Birth</td>
+                <td><input class="form-control" type="date" /></td>
+              </tr>
+              <tr>
+                <td>Gender</td>
+                <td>
+                  <input type="radio" name="Gender" /> Male
+                  <input type="radio" name="Gender" /> Female
+                </td>
+              </tr>
+
+              <tr>
+                <td>Batch</td>
+                <td>
+                  <select>
+                    <option>--</option>
+                    <option>19.1</option>
+                    <option>19.2</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Faculty</td>
+                <td>
+                  <select>
+                    <option>--</option>
+                    <option>Faculty of Business</option>
+                    <option>Faculty of Computing</option>
+                    <option>Faculty of Engineering</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Country</td>
+                <td>
+                  <select>
+                    <option>--</option>
+                    <option>Sri Lanka</option>
+                    <option>USA</option>
+                    <option>India</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Phone Number</td>
+                <td>
+                  <input
+                    class="form-control"
+                    placeholder="Phone Number"
+                    type="text"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    class="form-control"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>Password</td>
+                <td><input class="form-control" type="password" /></td>
+              </tr>
+              <tr>
+                <td>Confirm Password</td>
+                <td><input class="form-control" type="password" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button class="btn btn-primary" type="submit">update</button
+        ><button
+          class="btn btn-primary"
+          type="button"
+          style="
+            background: linear-gradient(
+                white,
+                rgb(235, 235, 235) 100%,
+                black 100%
+              ),
+              rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            border-color: rgb(0, 0, 0);
+          "
+        >
+          cancel
+        </button>
+      </form>
     </section>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <input type="file"  accept="image/gif, image/jpeg, image/png" name="image" id="file" style="display: none;">
+    <input
+      type="file"
+      accept="image/gif, image/jpeg, image/png"
+      name="image"
+      id="file"
+      style="display: none"
+    />
     <script>
-        var loadFile = function(event) {
-            var image = document.getElementById('output');
-            image.src = URL.createObjectURL(event.target.files[0]);
-        };
+      var loadFile1 = function (event) {
+        var image = document.getElementById("output");
+        image.src = URL.createObjectURL(event.target.files[0]);
+      };
     </script>
     <script>
-        var loadFile = function(event) {
-            var image = document.getElementById('output');
-            image.src = URL.createObjectURL(event.target.files[0]);
-        };
+      var loadFile2 = function (event) {
+        var image = document.getElementById("output2");
+        image.src = URL.createObjectURL(event.target.files[0]);
+      };
     </script>
-</body>
+  </body>
 </html>

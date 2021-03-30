@@ -39,9 +39,9 @@ h1,h2,h3 {
 
 }
 
-#site-search {
+/* #site-search {
     display: ;
-}
+} */
 
 /* User Profile Image Rounding */
 .user-image {
@@ -96,5 +96,113 @@ h1,h2,h3 {
     position: relative;
     left: 70px;
 }
+
+
+/* User Left Card */
+.card-left {
+    width: 20vw;
+    height: 60vh;
+    background-color: #FFFFFF;
+    box-shadow: 5px 5px 5px black;
+    border-radius: 5px;
+    position: relative;
+    top: 20px;
+    left: 20px;
+
+}
+
+.user-profile-left {
+    position: relative;
+    top: 20px;
+    left: 20px;
+
+}
+
+.user-profile-left img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+
+.user-name-left {
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: relative;
+    left: 10px;
+}
+
+/* left List Item */
+
+.left-item {
+    position: relative;
+    top: 40px;
+    left: 30px;
+    font-size: 1.5rem;
+    list-style-type: none;
+    display: flex;
+    
+}
+
+.list-item-position  {
+    display: inline-flex;
+    position: relative;
+    left: 10px;
+    top: 10px;
+}
+
+/* Icons initializing for the ul bullets */
+.item-1 {
+    list-style-image: url(../img/friends.svg);
+    margin-bottom: 10px;
+
+}
+.item-2 {
+    list-style-image: url(../img/events.svg);
+    margin-bottom: 10px;
+    
+}
+.item-3 {
+    list-style-image: url(../img/group.svg);
+    margin-bottom: 10px;
+}
+.item-4 {
+    list-style-image: url(../img/bookmark-small.svg);
+    margin-bottom: 10px;
+}
+.item-5 {
+    list-style-image: url(../img/school.svg);
+    margin-bottom: 10px;
+}
+
+/* Correct positions of the list */
+.item-name-base {
+    position: relative;
+    left: 10px;
+    bottom: 5px;
+}
+
+.item-pos {
+    position: relative;
+    left: 5px;
+    
+}
+
+/* Thick red border */
+.horizontal-thick {
+    border: 2px solid black;
+    position: relative;
+    top: 20px;
+
+  }
+
+  .label-last {
+      position: relative;
+      top: 50px;
+      left: 30px;
+  }
+
+
+
+
 
 
