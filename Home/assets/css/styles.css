@@ -116,7 +116,7 @@ h1,h2,h3 {
 /* User Left Card */
 .card-left {
     width: 20vw;
-    height: 60vh;
+    height: 65vh;
     background-color: #FFFFFF;
     box-shadow: 5px 5px 5px black;
     border-radius: 5px;
@@ -220,7 +220,7 @@ h1,h2,h3 {
   
   .card-right-follow {
     width: 20vw;
-    height: 40vh;
+    height: 43vh;
     background-color: #FFFFFF;
     box-shadow: 5px 5px 5px black;
     border-radius: 5px;
@@ -275,7 +275,7 @@ h1,h2,h3 {
 
 .right-item-upcoming {
     width: 20vw;
-    height: 30vh;
+    height: 34vh;
     background: #FFFFFF;
     box-shadow: 5px 5px 5px black;
     border-radius: 5px;
@@ -421,10 +421,32 @@ h1,h2,h3 {
     font-size: 2rem;
     width: 400px;
     height: 80px;
-    border-style: none;
-    
-    
+    border-style: none; 
 }
+
+/* Status Component Bottom Button */
+
+.bottom-btn-section {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 150px;
+    position: relative;
+    top: 45px;
+}
+
+.bottom-btn-post {
+    position: relative;
+    left: 320px;
+    top: 15px;
+    
+
+}
+
+.bottom-btn-post .btn {
+    width: 90px;
+}
+
+
 
 
 
