@@ -292,6 +292,59 @@ h1,h2,h3 {
 
 }
 
+/* Upcoming Event Name List  */
+
+.event-1 {
+    list-style-image: url(../img/events.svg);
+    margin-bottom: 20px;
+
+}
+
+.event-2 {
+    list-style-image: url(../img/events.svg);
+    margin-bottom: 10px;
+    position: relative;
+    left: 10px;
+
+}
+
+.event-list-item {
+    position: relative;
+    left: -5px;
+}
+
+.event-name-base {
+    position: relative;
+    left: 10px;
+    bottom: 5px;
+    font-weight: bold;
+    font-size: 1.2rem;   
+}
+
+.event-item-set .btn {
+    position: relative;
+    left: 25px;
+    top: -5px;
+
+}
+
+.event-item-set-2 {
+    position: relative;
+    left: 20px;
+    top: 15px;
+}
+
+.event-item-set-2 .btn {
+    position: relative;
+    left: 23px;
+    top: -5px;
+
+}
+
+.show-more-event {
+    position: relative;
+    top: -15px;
+}
 
 
 
