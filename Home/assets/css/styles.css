@@ -211,7 +211,7 @@ h1,h2,h3 {
     border-radius: 5px;
     position: relative;
     left: 75vw;
-    bottom: 45vh;
+    bottom: 50vh;
 }
 
 .card-label-follow {
@@ -230,7 +230,7 @@ h1,h2,h3 {
 .horizontal-thick-right {
     border: 1px solid black;
     position: relative;
-    top: 20px;
+    top: 10px;
 
   }
 
@@ -254,8 +254,8 @@ h1,h2,h3 {
 
 .card-label-upcoming {
     position: relative;
-    top: 50px;
-    left: 10px;
+    top: -5px;
+    left: 5px;
 }
 
 .right-item-upcoming {
@@ -265,19 +265,31 @@ h1,h2,h3 {
     box-shadow: 5px 5px 5px black;
     border-radius: 5px;
     position: relative;
-    top: 60px;
+    left: 75vw;
+    bottom: 45vh;
+
+    
 }
 
 .right-card-events {
     position: relative;
-    left: 50px;
+    left: 40px;
+    top: 2px;
     font-weight: bold;
-    top: 20px;
+    
 }
 
 .right-item-upcoming .btn {
     position: relative;
     left: 50px
+}
+
+.horizontal-thick-event {
+    border: 2px solid black;
+    position: relative;
+    top: -5px;
+    left: -20px;
+
 }
 
 
