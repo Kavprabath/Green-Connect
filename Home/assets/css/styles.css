@@ -105,8 +105,8 @@ h1,h2,h3 {
     background-color: #FFFFFF;
     box-shadow: 5px 5px 5px black;
     border-radius: 5px;
-    position: relative;
-    top: 20px;
+    position: fixed;
+    top: 80px;
     left: 20px;
 
 }
