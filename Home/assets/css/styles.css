@@ -8,6 +8,11 @@
     
 }
 
+/* Focus Outline Removing  */
+*:focus {
+    outline: none;
+}
+
 
 /* Typography */
 html {
@@ -381,6 +386,47 @@ h1,h2,h3 {
     
 
 }
+
+/* Main Status Section */
+.user-profile-status {
+    position: relative;
+    top: 50px;
+    left: 30px;
+}
+
+.user-image-status {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+}
+
+.user-greeting-status {
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: relative;
+    left: 20px;
+}
+
+.horizontal-thick-status {
+    position: relative;
+    top: 40px;
+    justify-content: stretch;
+    left: -25px;
+}
+
+#status-input {
+    position: absolute;
+    left: 60px;
+    top: -10px;
+    font-size: 2rem;
+    width: 400px;
+    height: 80px;
+    border-style: none;
+    
+    
+}
+
+
 
 
 
