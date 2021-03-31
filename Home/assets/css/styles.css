@@ -32,6 +32,10 @@ h1,h2,h3 {
 
 #nav-color {
     background-color: #C6C6C6;
+    position: fixed;
+    display: flex;
+    justify-content: stretch;
+    width: 100%;
 }
 
 .GConnect_Logo {
@@ -39,9 +43,7 @@ h1,h2,h3 {
 
 }
 
-/* #site-search {
-    display: ;
-} */
+
 
 /* User Profile Image Rounding */
 .user-image {
@@ -67,6 +69,13 @@ h1,h2,h3 {
 }
 
 /* Navbar Layout Position */
+
+/* .navbar-fix {
+    position: fixed;
+    left: 50px;
+} */
+
+
 .navbar-logo-G {
     position: relative;
     left: -30px;
