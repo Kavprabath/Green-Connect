@@ -36,6 +36,7 @@ h1,h2,h3 {
     display: flex;
     justify-content: stretch;
     width: 100%;
+    z-index: 999;
 }
 
 .GConnect_Logo {
@@ -353,6 +354,32 @@ h1,h2,h3 {
 .show-more-event {
     position: relative;
     top: -15px;
+}
+
+/* What is happening section */
+.status-main {
+    width: 35vw;
+    height: 30vh;
+    background-color: #FFFFFF;
+    box-shadow: 5px 5px 5px black;
+    border-radius: 5px;
+    position: relative;
+    left: 30vw;
+    top: 20vh;
+    
+}
+
+.status-main::after {
+    content: '';
+    position: absolute;
+    width: 395px;
+    height: 40px;
+    background: #0A0A52 ;
+    left: 150px;
+    top: -5px;
+    border-radius: 5px;
+    
+
 }
 
 
