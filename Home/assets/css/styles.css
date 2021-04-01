@@ -499,6 +499,15 @@ h1,h2,h3 {
 
 }
 
+/* Post Bottom Button Set */
+.bottom-post-btn {
+    display: inline-flex;
+    position: relative;
+    top: -30px;
+    width: 26vw;
+    justify-content: space-between;
+}
+
 
 
 
