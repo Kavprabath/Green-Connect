@@ -45,7 +45,7 @@ h1,h2,h3 {
 }
 
 .GConnect_Logo {
-    width: 4rem;
+    width: 6rem;
 
 }
 
@@ -85,17 +85,47 @@ h1,h2,h3 {
 .navbar-logo-G {
     position: relative;
     left: -30px;
+
 }
 
 .nav-search-G {
     position: relative;
-    left: -45px;
+    /* left: -200px; */
+
+    top: 15px;
+    
+
+}
+
+/* Search Section */
+.search-section {
+    display: inline-flex;
+
+}
+
+.nav-search-bar {
+    width: 200px;
+    height: 30px;
+
+}
+
+#search-btn {
+    height: 30px;
+    width: 40px;
 }
 
 .nav-icons-G {
     position: relative;
     left: -20px;
 
+}
+
+/* Nav Left Section */
+.nav-left-section {
+    display: inline-flex;
+    width: 50rem;
+    position: relative;
+    left: -10px;
 }
 
 .container-flex-right{

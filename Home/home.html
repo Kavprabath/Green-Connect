@@ -50,21 +50,31 @@
     <!-- Navbar Section -->
     <nav id="nav-color" class="navbar navbar-light">
       <div class="container">
-        <div class="navbar-logo-G">
-          <a class="navbar-brand" href="home.html">
-            <img
-              src="./assets/img/Green_Connect_Logo.png"
-              alt="Green Connect Logo"
-              class="GConnect_Logo"
-            />
-          </a>
+        <div class="nav-left-section">
+          <div class="navbar-logo-G">
+            <a class="navbar-brand" href="home.html">
+              <img
+                src="./assets/img/Green_Connect_Logo.png"
+                alt="Green Connect Logo"
+                class="GConnect_Logo"
+              />
+            </a>
+          </div>
+          <!-- Search Section -->
+          <div class="search-section">
+            <form class="nav-search-G" action="action_page.php">
+              <input
+                class="nav-search-bar"
+                type="text"
+                placeholder="Search.."
+                name="search"
+              />
+              <button id="search-btn" type="submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </form>
+          </div>
         </div>
-
-        <!-- Search Section -->
-        <form class="nav-search-G" action="action_page.php">
-          <input type="text" placeholder="Search.." name="search" />
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
 
         <!-- Button Mode Selection -->
 
