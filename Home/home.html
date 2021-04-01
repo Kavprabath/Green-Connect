@@ -28,6 +28,22 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
 
+    <!-- Inline JS for the testing purpose -->
+    <script language="javascript">
+      function changeIcon() {
+        if (
+          document.getElementById("imgClickAndChange").src ==
+          "./assets/img/heart.svg"
+        ) {
+          document.getElementById("imgClickAndChange").src =
+            "./assets/img/like.svg";
+        } else {
+          document.getElementById("imgClickAndChange").src =
+            "./assets/img/like.svg";
+        }
+      }
+    </script>
+
     <title>GConnect - Home</title>
   </head>
   <body>
@@ -329,6 +345,30 @@
                 id="user-post-image"
                 src="./assets/img/nsbm-2020.jpg"
                 alt="Picure added by the user"
+              />
+            </div>
+
+            <!-- Like Comment Buttons Down Post -->
+            <div class="bottom-post-btn">
+              <input
+                id="imgClickAndChange"
+                type="image"
+                src="./assets/img/heart.svg"
+                name="saveForm"
+                class="input-photos"
+                onclick="changeIcon()"
+              />
+              <input
+                type="image"
+                src="./assets/img/comment.svg"
+                name="saveForm"
+                class="input-photos"
+              />
+              <input
+                type="image"
+                src="./assets/img/retweet.svg"
+                name="saveForm"
+                class="input-photos"
               />
             </div>
           </div>
