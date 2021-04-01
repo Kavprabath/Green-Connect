@@ -448,7 +448,7 @@ h1,h2,h3 {
 
 .post-user {
     width: 35vw;
-    height: 50vh;
+    height: 65vh;
     background-color: #FFFFFF;
     box-shadow: 5px 5px 5px black;
     border-radius: 5px;
@@ -478,6 +478,26 @@ h1,h2,h3 {
     top: 10px;
 }
 
+/* Text Area User Text Post */
+.text-post-section {
+    position: relative;
+    left: 70px;
+}
+
+#user-text-load {
+    border-style: none;
+}
+
+#user-post-image {
+    position: relative;
+    width: 26vw;
+    height: 30vh;
+
+    border-radius: 0;
+    left: 1px;
+    top: -50px;
+
+}
 
 
 
