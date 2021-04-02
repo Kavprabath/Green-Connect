@@ -118,10 +118,10 @@ h1,h2,h3 {
     display: inline-flex;
     justify-content: space-between;
     position: relative;
-    left: -120px; 
-    
+    left: -60px; 
     width: 300px;
     height: 50px;
+    top: 5px;
 
 }
 
@@ -135,26 +135,55 @@ h1,h2,h3 {
 
 .container-flex-right{
     
-    width: 200px;
+    width: 300px;
     height: 50px;
     display: inline-flex;
     justify-content: space-between;
     position: relative;
     left: 60px;
-    border: 2px solid red ;
+    top: 5px;
+    
 
     
 }
 
+/* Navbar User Profile Section */
 .user-badge {
     position: relative;
-    left: 40px;
+    left: 100px;
+    display: inline-flex;
     
     
+}
+
+#user-name {
+    color: black;
+    text-decoration: none;
+    font-size: 1.5rem;
+    position: relative;
+    left: 10px;
+    top: 10px;
+    font-weight: bold;
 }
 
 .nav-round-btn-right {
     display: inline-flex;
+    position: relative;
+    left: 50px;
+    width: 200px;
+    justify-content: space-between;
+    
+    
+}
+
+.selection-nav-icon {
+    width: 4rem;
+    height: 4rem;
+}
+
+.btn-right-select {
+    width: 40px;
+    height: 40px;
 }
 
 /* User Left Card */
