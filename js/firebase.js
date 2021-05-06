@@ -96,9 +96,11 @@ var firebaseConfig = {
         // If there is a user signed in
         var email = user.email;
         alert("Active User" + email);
+        
     }else {
           //No user is Signed In
           alert("No Active User!");
+          
     }
 });
   
@@ -121,6 +123,7 @@ var firebaseConfig = {
   function signOut() {
     auth.signOut();
     alert("User Signed Out!");
+    window.location.href = "../Log In/login.html";
   }
   
   function get() {

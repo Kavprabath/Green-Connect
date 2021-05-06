@@ -137,6 +137,7 @@
               class="btn-right-select"
             />
             <input
+              onclick="signOut()"
               type="image"
               src="./assets/img/sign-out-option.png"
               name="right-nav-btn-select"
@@ -149,82 +150,6 @@
 
     <!-- Background Color Added -->
     <section class="section-retain">
-      <!-- Inbox dropdown section -->
-      <div class="inbox-section">
-        <div class="container">
-          <div class="card">
-            <div class="top">
-              <h4 class="mt-2">Inbox</h4>
-            </div>
-            <div class="bottom">
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="d-flex flex-row align-items-center">
-                  <div class="image-inbox">
-                    <img src="./assets/img/user10.png" width="70" />
-                    <span class="type"
-                      ><img src="./assets/img/messenger.png" width="20"
-                    /></span>
-                  </div>
-                  <div class="d-flex flex-column line-height ml-2">
-                    <span class="font-weight-bold content-center"
-                      >hannahdat21</span
-                    >
-                    <span class="content-center">Can i order online?</span>
-                    <span class="d-flex flex-row align-items-center l-now"
-                      ><small class="live"></small>Live now</span
-                    >
-                  </div>
-                </div>
-                <span class="dots"> </span>
-              </div>
-              <div
-                class="d-flex justify-content-between align-items-center mt-2"
-              >
-                <div class="d-flex flex-row align-items-center">
-                  <div class="image-inbox">
-                    <img src="./assets/img/user20.png" width="70" />
-                    <span class="type"
-                      ><img src="./assets/img/insta.png" width="20"
-                    /></span>
-                  </div>
-                  <div class="d-flex flex-column line-height ml-2">
-                    <span class="font-weight-bold content-center"
-                      >hannahdat21</span
-                    >
-                    <span class="content-center">Is this still available?</span>
-                    <span class="d-flex flex-row align-items-center l-now"
-                      ><small class="live"></small>Live now</span
-                    >
-                  </div>
-                </div>
-                <span class="dots"> </span>
-              </div>
-              <div
-                class="d-flex justify-content-between align-items-center mt-2"
-              >
-                <div class="d-flex flex-row align-items-center">
-                  <div class="image-inbox">
-                    <img src="./assets/img/user10.png" width="70" />
-                    <span class="type"
-                      ><img src="./assets/img/messenger.png" width="20"
-                    /></span>
-                  </div>
-                  <div class="d-flex flex-column line-height ml-2">
-                    <span class="font-weight-bold content-center"
-                      >hannahdat21</span
-                    >
-                    <span class="content-center">Thanks hannah!</span>
-                    <span class="d-flex flex-row align-items-center l-now"
-                      ><small class="live"></small>Live now</span
-                    >
-                  </div>
-                </div>
-                <span class="dots"> </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- Left Card Creation -->
       <div class="card-left">
         <!-- User Profile -->
@@ -492,5 +417,11 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
     -->
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
+
+    <script src="../js/firebase.js"></script>
   </body>
 </html>
