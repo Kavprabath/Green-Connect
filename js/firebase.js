@@ -17,22 +17,34 @@ var firebaseConfig = {
   // Set database variable
   var database = firebase.database()
   
-  function save() {
-    var email = document.getElementById('email').value
-    var password = document.getElementById('password').value
-    var username = document.getElementById('username').value
-    var say_something = document.getElementById('say_something').value
-    var favourite_food = document.getElementById('favourite_food').value
+  function signup() {
+    
+    var fname = document.getElementById('user_fname').value
+    var lname = document.getElementById('user_lname').value
+    var userName = document.getElementById('user_name').value
+    var nsbmEmail = document.getElementById('nsbm_email').value
+    var userDOB = document.getElementById('dob_input').value
+    var userGender = document.getElementById('user_gender').value
+    var userBatch = document.getElementById('user_batch').value
+    var userFaculty = document.getElementById('user_faculty').value
+    
+    // Password Input Variables
+    var userPassword = document.getElementById('user_password').value
+    var userConfirmPassword = document.getElementById('confirm_password').value
+
   
-    database.ref('users/' + username).set({
-      email : email,
-      password : password,
-      username : username,
-      say_something : say_something,
-      favourite_food : favourite_food
+    database.ref('Email/' + nsbmEmail).set({
+      first_name: fname,
+      last_name: lname,
+      user_dob: userDOB,
+      user_gender: userGender,
+      user_batch: userBatch,
+      user_faculty: userFaculty,
+      user_password: userPassword
+
     })
   
-    alert('Saved')
+    alert('User Registered Successfully!')
   }
   
   function get() {
