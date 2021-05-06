@@ -18,7 +18,10 @@ var firebaseConfig = {
   
   
   // Set database variable
-  var database = firebase.database()
+  var database = firebase.database();
+
+  //Sert Authentication Variable
+  var auth = firebase.auth();
 
 
   function stringToHash(string) {
@@ -42,17 +45,24 @@ var firebaseConfig = {
     var studentID = document.getElementById('student_id').value
     var fname = document.getElementById('user_fname').value
     var lname = document.getElementById('user_lname').value
-    var nsbmEmail = document.getElementById('nsbm_email').value
+    var nsbmEmail = document.getElementById('nsbm_email'); //Not getting the value in
     var userDOB = document.getElementById('dob_input').value
     var userGender = document.getElementById('user_gender').value
     var userBatch = document.getElementById('user_batch').value
     var userFaculty = document.getElementById('user_faculty').value
-    
-    // Password Input Variables
-    var userPassword = stringToHash(document.getElementById('user_password').value);
-    var userConfirmPassword = stringToHash(document.getElementById('confirm_password').value);
 
-   //User Input Validations
+ 
+    
+    // // Password Input Variables
+    var userPassword = document.getElementById('user_password');
+    // var userConfirmPassword = stringToHash(document.getElementById('confirm_password').value);
+
+    const promise = auth.createUserWithEmailAndPassword(nsbmEmail.value, userPassword.value);
+    promise.catch(e => alert(e.message));
+
+    alert("User Signed Up!");
+
+    //User Input Validations
    if(studentID == "") {
      alert("Please Fill Out the studentID!" );
    }
@@ -68,14 +78,49 @@ var firebaseConfig = {
       user_gender: userGender,
       user_batch: userBatch,
       user_faculty: userFaculty,
-      user_email: nsbmEmail,
-      user_password: userPassword
+      
+      
 
     })
   
     alert('User Registered Successfully!')
     document.forms['input-sec'].reset()
     
+  }
+
+  
+  //Check whether the auth state
+  auth.onAuthStateChanged(function(user){
+    if(user){
+        
+        // If there is a user signed in
+        var email = user.email;
+        alert("Active User" + email);
+    }else {
+          //No user is Signed In
+          alert("No Active User!");
+    }
+});
+  
+  
+  function signIn() {
+    
+    var email = document.getElementById("user_email");
+    var password = document.getElementById("user_password");
+
+    const promise = auth.signInWithEmailAndPassword(email.value, password.value);
+    promise.catch(e => alert(e.message));
+
+    alert("Signed In with: " + email.value);
+    
+    //Redirecting user to the home page after authentication
+    window.location.href = "../Home/home.html";
+
+  }
+
+  function signOut() {
+    auth.signOut();
+    alert("User Signed Out!");
   }
   
   function get() {
