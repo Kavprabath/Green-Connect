@@ -13,17 +13,19 @@
 
   <body>
     <!-- Start: Log In Card -->
-    <div class="login-card-bg">
+    <div id="first-div" class="login-card-bg">
       <!-- Start: Heading -->
       <div class="card-heading">
         <label style="font-size: 25px"><strong>GConnect Login</strong></label>
       </div>
       <!-- End: Heading -->
+
       <!-- Start: Input Fields -->
       <div class="input-field-position">
         <!-- Start: Email Field -->
         <div class="input-bg">
-          <img class="email-icon" src="assets/img/email.svg" /><input
+          <img class="email-icon" src="assets/img/email.svg" />
+          <input
             type="email"
             id="user_email"
             class="email-input"
@@ -49,6 +51,72 @@
       <!-- Start: LogIn Button Section -->
       <div>
         <button
+          onclick="login()"
+          class="btn btn-primary btn-lg login-btn"
+          id="login_btn"
+          type="button"
+          style="text-align: center; font-size: 16px"
+        >
+          LOGIN
+        </button>
+      </div>
+      <!-- End: LogIn Button Section -->
+      <!-- Start: Link to Sign Up -->
+      <div class="link-section">
+        <label style="font-size: 11px">Don`t have an account yet?</label
+        ><a
+          id="signup_link"
+          class="signup-link"
+          href="../Signup/signup.html"
+          style="font-size: 14px"
+          >Sign Up</a
+        >
+      </div>
+      <!-- End: Link to Sign Up -->
+    </div>
+
+    <!-- 2nd Division -->
+
+    <!-- Start: Log In Card -->
+    <div id="second-div" class="login-card-bg">
+      <!-- Start: Heading -->
+      <div class="card-heading">
+        <label style="font-size: 25px"><strong>GConnect Test</strong></label>
+      </div>
+      <!-- End: Heading -->
+
+      <!-- Start: Input Fields -->
+      <div class="input-field-position">
+        <!-- Start: Email Field -->
+        <div class="input-bg">
+          <img class="email-icon" src="assets/img/email.svg" />
+          <input
+            type="email"
+            id="user_email2"
+            class="email-input"
+            placeholder="Email"
+          />
+        </div>
+        <!-- End: Email Field -->
+        <!-- Start: Password Field -->
+        <div class="input-bg password-bg">
+          <img
+            class="password-icon"
+            src="assets/img/passwor%20icon.svg"
+          /><input
+            type="password"
+            id="user_password2"
+            class="password-input"
+            placeholder="Password"
+          />
+        </div>
+        <!-- End: Password Field -->
+      </div>
+      <!-- End: Input Fields -->
+      <!-- Start: LogIn Button Section -->
+      <div>
+        <button
+          onclick="login()"
           class="btn btn-primary btn-lg login-btn"
           id="login_btn"
           type="button"
@@ -74,5 +142,13 @@
     <!-- End: Log In Card --><img id="bg" src="assets/img/nsbm-full.jpg" />
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Linking index.js -->
+    <script src="../js/firebase.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+
+    >
   </body>
 </html>
