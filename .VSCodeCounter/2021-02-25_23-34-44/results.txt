@@ -1,0 +1,31 @@
+Date : 2021-02-25 23:34:44
+Directory : /Users/adnan/Documents/Projects/Done/social-networking-site-in-nodejs-and-mongodb/package-3-premium-social-networking-site-in-nodejs-and-mongodb/modules
+Total : 7 files,  1479 codes, 57 comments, 312 blanks, all 1848 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |          7 |      1,479 |         57 |        312 |      1,848 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                                                  | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                                                     |          7 |      1,479 |         57 |        312 |      1,848 |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                                                              | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Users/adnan/Documents/Projects/Done/social-networking-site-in-nodejs-and-mongodb/package-3-premium-social-networking-site-in-nodejs-and-mongodb/modules/add-post.js  | JavaScript |        222 |          8 |         43 |        273 |
+| /Users/adnan/Documents/Projects/Done/social-networking-site-in-nodejs-and-mongodb/package-3-premium-social-networking-site-in-nodejs-and-mongodb/modules/admin.js     | JavaScript |        424 |          1 |         95 |        520 |
+| /Users/adnan/Documents/Projects/Done/social-networking-site-in-nodejs-and-mongodb/package-3-premium-social-networking-site-in-nodejs-and-mongodb/modules/chat.js      | JavaScript |        285 |         13 |         55 |        353 |
+| /Users/adnan/Documents/Projects/Done/social-networking-site-in-nodejs-and-mongodb/package-3-premium-social-networking-site-in-nodejs-and-mongodb/modules/edit-post.js | JavaScript |        151 |          7 |         34 |        192 |
+| /Users/adnan/Documents/Projects/Done/social-networking-site-in-nodejs-and-mongodb/package-3-premium-social-networking-site-in-nodejs-and-mongodb/modules/functions.js | JavaScript |         92 |         14 |         13 |        119 |
+| /Users/adnan/Documents/Projects/Done/social-networking-site-in-nodejs-and-mongodb/package-3-premium-social-networking-site-in-nodejs-and-mongodb/modules/group.js     | JavaScript |        151 |          7 |         36 |        194 |
+| /Users/adnan/Documents/Projects/Done/social-networking-site-in-nodejs-and-mongodb/package-3-premium-social-networking-site-in-nodejs-and-mongodb/modules/page.js      | JavaScript |        154 |          7 |         36 |        197 |
+| Total                                                                                                                                                                 |            |      1,479 |         57 |        312 |      1,848 |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
