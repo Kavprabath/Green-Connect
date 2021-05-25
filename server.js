@@ -43,15 +43,15 @@ var users = [];
 
 var mainURL = "http://localhost:3000";
 
-var nodemailerFrom = "nayanidiss99@gmail.com";
+var nodemailerFrom = "your-email@gmail.com";
 var nodemailerObject = {
 	service: "gmail",
 	host: 'smtp.gmail.com',
     port: 465,
     secure: true,
 	auth: {
-		user: "nayanidiss99@gmail.com",
-		pass: "empresswu1"
+		user: "your-email@gmail.com",
+		pass: "your-password"
 	}
 };
 
