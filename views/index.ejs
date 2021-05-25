@@ -1,0 +1,103 @@
+<%- include ("includes/header") %>
+
+<section>
+	<div class="gap gray-bg">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row" id="page-contents">
+						<div class="col-md-3">
+							<%- include ("includes/left-sidebar") %>
+						</div>
+
+						<div class="col-md-6">
+							<div id="add-post-box"></div>
+							<div class="loadMore" id="newsfeed"></div>
+
+							<button class="btn-view btn-load-more" onclick="loadMore.fetch();">Load More</button>
+						</div>
+
+						<div class="col-md-3">
+							<%- include ("includes/right-sidebar") %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	var isHomePage = true;
+
+	function doPost(form) {
+		var ajax = new XMLHttpRequest();
+		ajax.open("POST", "/addPost", true);
+
+		form.submit.querySelector("i").style.display = "";
+		form.submit.setAttribute("disabled", "disabled");
+
+		ajax.onreadystatechange = function() {
+			if (this.readyState == 4) {
+				if (this.status == 200) {
+					var response = JSON.parse(this.responseText);
+					// console.log(response);
+
+					form.submit.querySelector("i").style.display = "none";
+					form.submit.removeAttribute("disabled");
+
+					if (response.status == "success") {
+						document.getElementById("form-add-post").querySelector("input[name='image']").value = "";
+						document.getElementById("form-add-post").querySelector("input[name='video']").value = "";
+						document.getElementById("form-add-post").querySelector("textarea[name='caption']").value = "";
+
+						document.getElementById("post-img-preview").style.display = "none";
+						document.getElementById("post-video-preview").style.display = "none";
+
+						var html = renderSinglePost(response.postObj);
+						document.getElementById("newsfeed").innerHTML = html + document.getElementById("newsfeed").innerHTML;
+
+					} else {
+						swal("Error", response.message, "error");
+					}
+				}
+
+				if (this.status == 500) {
+					console.log(this.responseText);
+				}
+			}
+		};
+
+		var formData = new FormData(form);
+		formData.append("accessToken", localStorage.getItem("accessToken"));
+		formData.append("imgData", document.getElementById("post-img-preview").getAttribute("src"));
+		ajax.send(formData);
+
+		return false;
+	}
+
+	function showNewsfeed() {
+		var ajax = new XMLHttpRequest();
+		ajax.open("POST", "/getNewsfeed", true);
+
+		ajax.onreadystatechange = function() {
+			if (this.readyState == 4) {
+				if (this.status == 200) {
+					var response = JSON.parse(this.responseText);
+					// console.log(response);
+					renderFeed(response);
+				}
+
+				if (this.status == 500) {
+					console.log(this.responseText);
+				}
+			}
+		};
+
+		var formData = new FormData();
+		formData.append("accessToken", localStorage.getItem("accessToken"));
+		ajax.send(formData);
+	}
+</script>
+
+<%- include ("includes/footer") %>
