@@ -8,7 +8,7 @@
     z-index: -1 !important;
 }
 body {
-    font-family: ProductSansRegular !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
 .dropdown-toggle::after {
     display: none !important;
