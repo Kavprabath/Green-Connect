@@ -8,7 +8,7 @@
     z-index: -1 !important;
 }
 body {
-    font-family: Tahoma !important;
+    font-family: ProductSansRegular !important;
 }
 .dropdown-toggle::after {
     display: none !important;
