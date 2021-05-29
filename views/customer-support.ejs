@@ -54,7 +54,7 @@
 
                                         <div class="col-md-8 text-right">
                                             <button class="btn btn-success" data-toggle="modal" data-target="#newTicketModal">
-                                                Create new ticket
+                                                How Can We Help?
                                             </button>
                                         </div>
                                     </div>
@@ -76,14 +76,14 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Create new ticket</h4>
+                <h4 class="modal-title">Tell Us What's Going On?</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
 
             <div class="modal-body">
                 <form method="POST" id="form-create-ticket" onsubmit="return createTicket(this);" enctype="multipart/form-data">
                     <div class="form-group">
-                        <textarea name="description" placeholder="Enter your query here..." rows="5" required></textarea>
+                        <textarea name="description" placeholder="Make Your Suggestions/Complains Here... " rows="5" required></textarea>
                         <i class="mtrl-select"></i>
                     </div>
 
@@ -108,7 +108,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="submit" form="form-create-ticket" name="submit" class="btn btn-success">
-                    Create ticket
+                    Submit
                 </button>
             </div>
         </div>

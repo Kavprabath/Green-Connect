@@ -787,7 +787,7 @@ function showAddPost() {
 					html += '<form method="post" id="form-add-post" onsubmit="return doPost(this);">';
 
 						html += '<input name="type" type="hidden" value="post" />';
-						html += '<textarea rows="2" name="caption" placeholder="write something"></textarea>';
+						html += '<textarea rows="2" name="caption" placeholder="What is Going on Your Mind?"></textarea>';
 						html += '<div class="attachments">';
 							html += '<ul>';
 
