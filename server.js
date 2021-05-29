@@ -43,15 +43,16 @@ var users = [];
 
 var mainURL = "http://localhost:3000";
 
-var nodemailerFrom = "your-email@gmail.com";
+// --------------- Sender`s Email Configurations ---------------------
+var nodemailerFrom = "greenconnect101@gmail.com";
 var nodemailerObject = {
 	service: "gmail",
 	host: 'smtp.gmail.com',
     port: 465,
     secure: true,
 	auth: {
-		user: "your-email@gmail.com",
-		pass: "your-password"
+		user: "greenconnect101@gmail.com",
+		pass: "nsbmgreen101"
 	}
 };
 
@@ -60,13 +61,15 @@ socketIO.on("connection", function (socket) {
 	socketID = socket.id;
 });
 
+
+// --------------- Server Startup And Functions ---------------------
 http.listen(3000, function () {
 	console.log("Server started at " + mainURL);
 
 	mongoClient.connect("mongodb://localhost:27017", {
 		useUnifiedTopology: true
 	}, function (error, client) {
-		var database = client.db("my_social_network");
+		var database = client.db("green_connect"); //Initializing MongoDB Database
 		console.log("Database connected.");
 
 		functions.database = database;
@@ -116,10 +119,13 @@ http.listen(3000, function () {
 			result.render("forgot-password");
 		});
 
+		// --------------- Send Recover Link For The User ---------------------
 		app.post("/sendRecoveryLink", function (request, result) {
 
+			//Getting user inputted email address
 			var email = request.fields.email;
 			
+			//Finding is there any existing user in the database for a recovery
 			database.collection("users").findOne({
 				"email": email
 			}, function (error, user) {
@@ -168,6 +174,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Getting Resetting Token ---------------------
 		app.get("/ResetPassword/:email/:reset_token", function (request, result) {
 
 			var email = request.params.email;
@@ -179,6 +186,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- User Email Verfication ---------------------
 		app.get("/verifyEmail/:email/:verification_token", function (request, result) {
 
 			var email = request.params.email;
@@ -219,6 +227,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Resetting The Password ---------------------
 		app.post("/ResetPassword", function (request, result) {
 		    var email = request.fields.email;
 		    var reset_token = request.fields.reset_token;
@@ -247,6 +256,7 @@ http.listen(3000, function () {
 					});
 				} else {
 
+					// --------------- Encrypting New Password---------------------
 					bcrypt.hash(new_password, 10, function (error, hash) {
 						database.collection("users").findOneAndUpdate({
 							$and: [{
@@ -271,6 +281,8 @@ http.listen(3000, function () {
 			});
 		});
 
+		
+		// --------------- Changed User Password ---------------------
 		app.get("/change-password", function (request, result) {
 			result.render("change-password");
 		});
@@ -308,6 +320,7 @@ http.listen(3000, function () {
 						return false;
 					}
 
+					// --------------- Encrypting Entered Password ---------------------
 					bcrypt.compare(current_password, user.password, function (error, isVerify) {
 						if (isVerify) {
 							bcrypt.hash(new_password, 10, function (error, hash) {
@@ -335,6 +348,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Signup A New User To The System ---------------------
 		app.post("/signup", function (request, result) {
 			var name = request.fields.name;
 			var username = request.fields.username;
@@ -354,7 +368,11 @@ http.listen(3000, function () {
 				}]
 			}, function (error, user) {
 				if (user == null) {
+					
+					// --------------- Encrypting User`s Password ---------------------
 					bcrypt.hash(password, 10, function (error, hash) {
+						
+						// --------------- Adding New User To The Database ---------------------
 						database.collection("users").insertOne({
 							"name": name,
 							"username": username,
@@ -413,6 +431,8 @@ http.listen(3000, function () {
 			});
 		});
 
+		
+		// --------------- Login Existing User To The System ---------------------
 		app.get("/login", function (request, result) {
 			result.render("login");
 		});
@@ -420,6 +440,8 @@ http.listen(3000, function () {
 		app.post("/login", function (request, result) {
 			var email = request.fields.email;
 			var password = request.fields.password;
+			
+			// --------------- Find Whether the User Exist In The System ---------------------
 			database.collection("users").findOne({
 				"email": email
 			}, function (error, user) {
@@ -438,6 +460,7 @@ http.listen(3000, function () {
 						return false;
 					}
 
+					// --------------- Encypting Login User`s Password ---------------------
 					bcrypt.compare(password, user.password, function (error, isVerify) {
 						if (isVerify) {
 
@@ -475,6 +498,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Logged User Handling Directing to the User`s Profile---------------------
 		app.get("/user/:username", function (request, result) {
 			database.collection("users").findOne({
 				"username": request.params.username
@@ -491,10 +515,13 @@ http.listen(3000, function () {
 			});
 		});
 
+		
+		// --------------- Update User`s Details ---------------------
 		app.get("/updateProfile", function (request, result) {
 			result.render("updateProfile");
 		});
 
+		// --------------- Checking Whether User Banned or Logget Out ---------------------
 		app.post("/getUser", async function (request, result) {
 			var accessToken = request.fields.accessToken;
 			
@@ -533,10 +560,12 @@ http.listen(3000, function () {
 			}
 		});
 
+		// --------------- Redirecting Logout User To Login Screen --------------------
 		app.get("/logout", function (request, result) {
 			result.redirect("/login");
 		});
 
+		// --------------- Uploading A Cover Photo ---------------------
 		app.post("/uploadCoverPhoto", function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var coverPhoto = "";
@@ -569,6 +598,8 @@ http.listen(3000, function () {
 
 						coverPhoto = "public/images/cover-" + new Date().getTime() + "-" + request.files.coverPhoto.name;
 
+						
+						// --------------- Handling Cover Photo Path ---------------------
 						// Read the file
 	                    fileSystem.readFile(request.files.coverPhoto.path, function (err, data) {
 	                        if (err) throw err;
@@ -611,6 +642,8 @@ http.listen(3000, function () {
 			});
 		});
 
+		
+		// --------------- Update User`s Profile Image---------------------
 		app.post("/uploadProfileImage", function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var profileImage = "";
@@ -643,6 +676,8 @@ http.listen(3000, function () {
 
 						profileImage = "public/images/profile-" + new Date().getTime() + "-" + request.files.profileImage.name;
 
+						
+						// --------------- Handling Profile Photo Path ---------------------
 						// Read the file
 	                    fileSystem.readFile(request.files.profileImage.path, function (err, data) {
 	                        if (err) throw err;
@@ -688,6 +723,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Update Profile Details ---------------------
 		app.post("/updateProfile", function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var name = request.fields.name;
@@ -737,6 +773,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Checking Existing Post in DB ---------------------
 		app.get("/post/:id", function (request, result) {
 			database.collection("posts").findOne({
 				"_id": ObjectId(request.params.id)
@@ -757,11 +794,13 @@ http.listen(3000, function () {
 			result.render("index");
 		});
 
+		// --------------- Adding A Post ---------------------
 		app.post("/addPost", function (request, result) {
 			addPost.execute(request, result);
 		});
 
-        app.post("/getUserFeed", async function (request, result) {
+        // --------------- Get User`s Feed And Check Whether User LogOut Or Not ---------------------
+		app.post("/getUserFeed", async function (request, result) {
             var username = request.fields.username;
             var authUsername = request.fields.auth_user;
 
@@ -787,7 +826,8 @@ http.listen(3000, function () {
                 return;
             }
 
-            /* add or update the profile views counter */
+            // --------------- Handle Profile View Counter ---------------------
+			/* add or update the profile views counter */
             if (authUsername != username) {
                 var hasViewed = await database.collection("profile_viewers").findOne({
                     $and: [{
@@ -912,6 +952,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Handle User Like Section. Here Cheking User is Banned or Not---------------------
 		app.post("/toggleLikePost", function (request, result) {
 
 			var accessToken = request.fields.accessToken;
@@ -1017,6 +1058,8 @@ http.listen(3000, function () {
 			});
 		});
 
+		
+		// --------------- Handle User Comment Section. Here Cheking User is Banned or Not---------------------
 		app.post("/postComment", function (request, result) {
 
 			var accessToken = request.fields.accessToken;
@@ -1109,6 +1152,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Handle User Post Reply Section. Here Cheking User is Banned or Not---------------------
 		app.post("/postReply", function (request, result) {
 
 			var accessToken = request.fields.accessToken;
@@ -1208,6 +1252,8 @@ http.listen(3000, function () {
 			});
 		});
 
+		
+		// --------------- Handle Search Field. Here Checking Is There Similarities Available In Pages,Users, Groups---------------------
 		app.get("/search/:query", function (request, result) {
 			var query = request.params.query;
 			result.render("search", {
@@ -1262,6 +1308,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Handle Friend Request Section. Here Cheking User is Banned or Not---------------------
 		app.post("/sendFriendRequest", function (request, result) {
 
 			var accessToken = request.fields.accessToken;
@@ -1369,6 +1416,8 @@ http.listen(3000, function () {
 			result.render("friends");
 		});
 
+
+		// --------------- Handle Accepting Friend Request. Here Cheking User is Banned or Not---------------------
 		app.post("/acceptFriendRequest", function (request, result) {
 
 			var accessToken = request.fields.accessToken;
@@ -1468,6 +1517,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Handle Unfriend Section. Here Cheking User is Banned or Not---------------------
 		app.post("/unfriend", function (request, result) {
 
 			var accessToken = request.fields.accessToken;
@@ -1553,6 +1603,7 @@ http.listen(3000, function () {
 			chat.getFriendsChat(request, result);
 		});
 
+		// --------------- Connecting To Socket ---------------------
 		app.post("/connectSocket", function (request, result) {
 			var accessToken = request.fields.accessToken;
 			database.collection("users").findOne({
@@ -1586,6 +1637,7 @@ http.listen(3000, function () {
 			result.render("createPage");
 		});
 
+		// --------------- Handle Create Page Section. ---------------------
 		app.post("/createPage", function (request, result) {
 
 			var accessToken = request.fields.accessToken;
@@ -1701,6 +1753,7 @@ http.listen(3000, function () {
 			result.render("pages");
 		});
 
+		// --------------- Fetching Pages That Already In The System---------------------
 		app.post("/getPages", function (request, result) {
 			var accessToken = request.fields.accessToken;
 
@@ -1740,6 +1793,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Render A Single Page ---------------------
 		app.get("/page/:_id", function (request, result) {
 			var _id = request.params._id;
 
@@ -1759,6 +1813,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Edit Page Section ---------------------
 		app.get("/edit-page/:_id", function (request, result) {
 			var _id = request.params._id;
 
@@ -1818,6 +1873,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Handle Page Liking ---------------------
 		app.post("/toggleLikePage", function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var _id = request.fields._id;
@@ -1923,6 +1979,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Get User Liked Pages From The System---------------------
 		app.post("/getMyPages", function (request, result) {
 			var accessToken = request.fields.accessToken;
 
@@ -1962,6 +2019,7 @@ http.listen(3000, function () {
 			result.render("createGroup");
 		});
 
+		// --------------- Create Group Section ---------------------
 		app.post("/createGroup", function (request, result) {
 
 			var accessToken = request.fields.accessToken;
@@ -2111,6 +2169,8 @@ http.listen(3000, function () {
 			result.render("groups");
 		});
 
+		
+		// --------------- Get Groups In The System ---------------------
 		app.post("/getGroups", function (request, result) {
 			var accessToken = request.fields.accessToken;
 
@@ -2150,6 +2210,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Find A Group Already In The System ---------------------
 		app.get("/group/:_id", function (request, result) {
 			var _id = request.params._id;
 
@@ -2169,6 +2230,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Edit Group Details In The System ---------------------
 		app.get("/edit-group/:_id", function (request, result) {
 			var _id = request.params._id;
 
@@ -2233,6 +2295,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Join For A Group ---------------------
 		app.post("/toggleJoinGroup", function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var _id = request.fields._id;
@@ -2361,6 +2424,7 @@ http.listen(3000, function () {
 			result.render("notifications");
 		});
 
+		// --------------- Group Request Accepting Section ---------------------
 		app.post("/acceptRequestJoinGroup", function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var _id = request.fields._id;
@@ -2452,6 +2516,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Marking Notifications As Read ---------------------
 		app.post("/markNotificationsAsRead", function (request, result) {
 			var accessToken = request.fields.accessToken;
 
@@ -2493,6 +2558,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Reject Request For Joining Group ---------------------
 		app.post("/rejectRequestJoinGroup", function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var _id = request.fields._id;
@@ -2578,6 +2644,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- share Post Section ---------------------
 		app.post("/sharePost", function (request, result) {
 
 			var accessToken = request.fields.accessToken;
@@ -2672,6 +2739,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Share Post In Page ---------------------
 		app.post("/sharePostInPage", async function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var pageId = request.fields.pageId;
@@ -2767,6 +2835,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Share Post In A Group ---------------------
 		app.post("/sharePostInGroup", async function (request, result) {
 
 			var accessToken = request.fields.accessToken;
@@ -2849,6 +2918,8 @@ http.listen(3000, function () {
 				}
 			});
 
+			
+			// --------------- Inserting A New Post For Database ---------------------
 			/* insert new document in posts collection */
 			await database.collection("posts").insertOne({
 				"caption": post.caption,
@@ -2879,6 +2950,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Get A Specific Post From Database ---------------------
 		app.post("/getPostById", async function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var _id = request.fields._id;
@@ -2926,6 +2998,7 @@ http.listen(3000, function () {
 			editPost.execute(request, result);
 		});
 
+		// --------------- Delete Post From System ---------------------
 		app.post("/deletePost", async function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var _id = request.fields._id;
@@ -2988,6 +3061,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Fetch More Post Section ---------------------
 		app.post("/fetch-more-posts", async function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var start = parseInt(request.fields.start);
@@ -3051,6 +3125,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Show Who Are Post Likers  ---------------------
 		app.post("/showPostLikers", async function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var _id = request.fields._id;
@@ -3094,6 +3169,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Show Post Shares ---------------------
 		app.post("/showPostSharers", async function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var _id = request.fields._id;
@@ -3137,6 +3213,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Customer Support Section For Creating A New Inquiery ---------------------
 		app.get("/customer-support", function (request, result) {
 			result.render("customer-support");
 		});
@@ -3235,6 +3312,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Get All Added Inquieries ---------------------
 		app.post("/getMyAllTickets", async function (request, result) {
 			var accessToken = request.fields.accessToken;
 			
@@ -3277,6 +3355,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Get A Inquiery And Edit It ---------------------
 		app.post("/getTicket", async function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var _id = request.fields._id;
@@ -3324,6 +3403,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Inquiery Editing ---------------------
 		app.post("/editTicket/:_id", async function (request, result) {
 
 			var accessToken = request.fields.accessToken;
@@ -3450,6 +3530,7 @@ http.listen(3000, function () {
 			});
 		});
 
+		// --------------- Delete A Inquiery From The System ---------------------
 		app.post("/deleteTicket", async function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var _id = request.fields._id;
@@ -3524,6 +3605,7 @@ http.listen(3000, function () {
             });
         });
 		
+		// --------------- Adding A Comment For A Inquiery ---------------------
 		app.post("/tickets/add-comment", async function (request, result) {
             var accessToken = request.fields.accessToken;
 			var _id = request.fields._id;
