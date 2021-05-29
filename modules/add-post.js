@@ -71,7 +71,7 @@ module.exports = {
             image = "public/images/" + new Date().getTime() + "-" + request.files.image.name;
             this.image = image;
 
-            this.requestModule.post("http://127.0.0.1:8888/scripts/social-networking-site/class.ImageFilter.php", {
+            this.requestModule.post("http://127.0.0.1/class.ImageFilter.php", {
                 formData: {
                     "validate_image": 1,
                     "base_64": base64
