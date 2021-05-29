@@ -43,15 +43,15 @@ var users = [];
 
 var mainURL = "http://localhost:3000";
 
-var nodemailerFrom = "your-email@gmail.com";
+var nodemailerFrom = "greenconnect101@gmail.com";
 var nodemailerObject = {
 	service: "gmail",
 	host: 'smtp.gmail.com',
     port: 465,
     secure: true,
 	auth: {
-		user: "your-email@gmail.com",
-		pass: "your-password"
+		user: "greenconnect101@gmail.com",
+		pass: "nsbmgreen101"
 	}
 };
 
