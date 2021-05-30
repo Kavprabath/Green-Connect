@@ -70,6 +70,76 @@ class ImageFilter
         if($score > 100) $score = 100;
         return $score;
     }
+    class ImageFilter
+{                              #R  G  B
+    var $colorA = 7944996;     #79 3B 24
+    var $colorB = 16696767;    #FE C5 BF
+
+
+    var $arA = array();
+    var $arB = array();
+    
+    function ImageFilter()
+    {
+        $this->arA['R'] = ($this->colorA >> 16) & 0xFF;
+        $this->arA['G'] = ($this->colorA >> 8) & 0xFF;
+        $this->arA['B'] = $this->colorA & 0xFF;
+        
+        $this->arB['R'] = ($this->colorB >> 16) & 0xFF;
+        $this->arB['G'] = ($this->colorB >> 8) & 0xFF;
+        $this->arB['B'] = $this->colorB & 0xFF;
+    }
+    
+    function GetScore($image)
+    {
+        $x = 0; $y = 0;
+        $img = $this->_GetImageResource($image, $x, $y);
+        if(!$img) return false;
+
+        $score = 0;
+        
+        $xPoints = array($x/8, $x/4, ($x/8 + $x/4), $x-($x/8 + $x/4), $x-($x/4), $x-($x/8));
+        $yPoints = array($y/8, $y/4, ($y/8 + $y/4), $y-($y/8 + $y/4), $y-($y/8), $y-($y/8));
+        $zPoints = array($xPoints[2], $yPoints[1], $xPoints[3], $y);
+
+        
+        for($i=0; $i<=$x; $i++)
+        {
+            for($j=0; $j<=$y; $j++)
+            {
+                $color = imagecolorat($img, $i, $j);
+                if($color >= $this->colorA && $color <= $this->colorB)
+                {
+                    $color = array('R'=> ($color >> 16) & 0xFF, 'G'=> ($color >> 8) & 0xFF, 'B'=> $color & 0xFF);
+                    if($color['G'] >= $this->arA['G'] && $color['G'] <= $this->arB['G'] && $color['B'] >= $this->arA['B'] && $color['B'] <= $this->arB['B'])
+                    {
+                        if($i >= $zPoints[0] && $j >= $zPoints[1] && $i <= $zPoints[2] && $j <= $zPoints[3])
+                        {
+                            $score += 3;
+                        }
+                        elseif($i <= $xPoints[0] || $i >=$xPoints[5] || $j <= $yPoints[0] || $j >= $yPoints[5])
+                        {
+                            $score += 0.10;
+                        }
+                        elseif($i <= $xPoints[0] || $i >=$xPoints[4] || $j <= $yPoints[0] || $j >= $yPoints[4])
+                        {
+                            $score += 0.40;
+                        }
+                        else
+                        {
+                            $score += 1.50;
+                        }
+                    }
+                }
+            }
+        }
+        
+        imagedestroy($img);
+        
+        $score = sprintf('%01.2f', ($score * 100) / ($x * $y));
+        if($score > 100) $score = 100;
+        return $score;
+    }
     
     function GetScoreAndFill($image, $outputImage)
     {
