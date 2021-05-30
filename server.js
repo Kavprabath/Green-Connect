@@ -376,7 +376,7 @@ http.listen(3000, function () {
 						
 						// --------------- Adding New User To The Database ---------------------
 						database.collection("users").insertOne({
-							"name": name,
+						 	"name": name,
 							"username": username,
 							"email": email,
 							"password": hash,
@@ -569,7 +569,6 @@ http.listen(3000, function () {
 			result.redirect("/login");
 		});
 
-		// --------------- Uploading A Cover Photo ---------------------
 		app.post("/uploadCoverPhoto", function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var coverPhoto = "";
@@ -731,7 +730,9 @@ http.listen(3000, function () {
 		app.post("/updateProfile", function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var name = request.fields.name;
-			var dob = request.fields.dob;
+			var batch = request.fields.batch;
+			var faculty = request.fields.faculty;
+			var dob = request.fields.dob; 
 			var city = request.fields.city;
 			var country = request.fields.country;
 			var aboutMe = request.fields.aboutMe;
@@ -759,6 +760,8 @@ http.listen(3000, function () {
 					}, {
 						$set: {
 							"name": name,
+							"batch": batch,
+							"faculty": faculty, 
 							"dob": dob,
 							"city": city,
 							"country": country,
