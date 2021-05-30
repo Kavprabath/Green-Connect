@@ -43,6 +43,51 @@ var users = [];
 
 var mainURL = "http://localhost:3000";
 
+var express = require("express");
+var app = express();
+
+var formidable = require("express-formidable");
+app.use(formidable());
+
+var mongodb = require("mongodb");
+var mongoClient = mongodb.MongoClient;
+var ObjectId = mongodb.ObjectId;
+
+var http = require("http").createServer(app);
+var bcrypt = require("bcrypt");
+var fileSystem = require("fs");
+
+var nodemailer = require("nodemailer");
+var requestModule = require('request');
+
+var functions = require("./modules/functions");
+var chat = require("./modules/chat");
+var page = require("./modules/page");
+var group = require("./modules/group");
+var addPost = require("./modules/add-post");
+var editPost = require("./modules/edit-post");
+
+var jwt = require("jsonwebtoken");
+var accessTokenSecret = "myAccessTokenSecret1234567890";
+
+const Cryptr = require("cryptr");
+const cryptr = new Cryptr("mySecretKey");
+
+const Filter = require("bad-words");
+const filter = new Filter();
+
+var admin = require("./modules/admin");
+admin.init(app, express);
+
+app.use("/public", express.static(__dirname + "/public"));
+app.set("view engine", "ejs");
+
+var socketIO = require("socket.io")(http);
+var socketID = "";
+var users = [];
+
+var mainURL = "http://localhost:3000";
+
 // --------------- Sender`s Email Configurations ---------------------
 var nodemailerFrom = "greenconnect101@gmail.com";
 var nodemailerObject = {
