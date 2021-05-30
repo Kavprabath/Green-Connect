@@ -356,7 +356,7 @@ http.listen(3000, function () {
 				if (user == null) {
 					bcrypt.hash(password, 10, function (error, hash) {
 						database.collection("users").insertOne({
-							"name": name,
+						 	"name": name,
 							"username": username,
 							"email": email,
 							"password": hash,
@@ -536,7 +536,7 @@ http.listen(3000, function () {
 		app.get("/logout", function (request, result) {
 			result.redirect("/login");
 		});
-
+		//  uploading a cover photo
 		app.post("/uploadCoverPhoto", function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var coverPhoto = "";
@@ -691,7 +691,9 @@ http.listen(3000, function () {
 		app.post("/updateProfile", function (request, result) {
 			var accessToken = request.fields.accessToken;
 			var name = request.fields.name;
-			var dob = request.fields.dob;
+			var batch = request.fields.batch;
+			var faculty = request.fields.faculty;
+			var dob = request.fields.dob; 
 			var city = request.fields.city;
 			var country = request.fields.country;
 			var aboutMe = request.fields.aboutMe;
@@ -719,6 +721,8 @@ http.listen(3000, function () {
 					}, {
 						$set: {
 							"name": name,
+							"batch": batch,
+							"faculty": faculty, 
 							"dob": dob,
 							"city": city,
 							"country": country,
