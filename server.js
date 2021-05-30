@@ -355,6 +355,8 @@ http.listen(3000, function () {
 			var email = request.fields.email;
 			var password = request.fields.password;
 			var gender = request.fields.gender;
+			var batch = request.files.batch;
+			var faculty = request.fields.faculty;
 			var reset_token = "";
 			var isVerified = false;
 			var isBanned = false;
@@ -385,6 +387,8 @@ http.listen(3000, function () {
 							"dob": "",
 							"city": "",
 							"country": "",
+							"batch": batch,
+							"faculty" : faculty
 							"aboutMe": "",
 							"friends": [],
 							"pages": [],
