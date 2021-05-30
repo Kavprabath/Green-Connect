@@ -43,50 +43,7 @@ var users = [];
 
 var mainURL = "http://localhost:3000";
 
-var express = require("express");
-var app = express();
 
-var formidable = require("express-formidable");
-app.use(formidable());
-
-var mongodb = require("mongodb");
-var mongoClient = mongodb.MongoClient;
-var ObjectId = mongodb.ObjectId;
-
-var http = require("http").createServer(app);
-var bcrypt = require("bcrypt");
-var fileSystem = require("fs");
-
-var nodemailer = require("nodemailer");
-var requestModule = require('request');
-
-var functions = require("./modules/functions");
-var chat = require("./modules/chat");
-var page = require("./modules/page");
-var group = require("./modules/group");
-var addPost = require("./modules/add-post");
-var editPost = require("./modules/edit-post");
-
-var jwt = require("jsonwebtoken");
-var accessTokenSecret = "myAccessTokenSecret1234567890";
-
-const Cryptr = require("cryptr");
-const cryptr = new Cryptr("mySecretKey");
-
-const Filter = require("bad-words");
-const filter = new Filter();
-
-var admin = require("./modules/admin");
-admin.init(app, express);
-
-app.use("/public", express.static(__dirname + "/public"));
-app.set("view engine", "ejs");
-
-var socketIO = require("socket.io")(http);
-var socketID = "";
-var users = [];
-
-var mainURL = "http://localhost:3000";
 
 // --------------- Sender`s Email Configurations ---------------------
 var nodemailerFrom = "greenconnect101@gmail.com";
@@ -108,6 +65,117 @@ socketIO.on("connection", function (socket) {
 
 
 // --------------- Server Startup And Functions ---------------------
+http.listen(3000, function () {
+	console.log("Server started at " + mainURL);
+
+	mongoClient.connect("mongodb://localhost:27017", {
+		useUnifiedTopology: true
+	}, function (error, client) {
+		var database = client.db("green_connect"); //Initializing MongoDB Database
+		console.log("Database connected.");
+
+		functions.database = database;
+
+		chat.database = database;
+		chat.socketIO = socketIO;
+		chat.users = users;
+		chat.ObjectId = ObjectId;
+		chat.fileSystem = fileSystem;
+		chat.cryptr = cryptr;
+		chat.filter = filter;
+
+		page.database = database;
+		page.ObjectId = ObjectId;
+		page.fileSystem = fileSystem;
+
+		group.database = database;
+		group.ObjectId = ObjectId;
+		group.fileSystem = fileSystem;
+
+		addPost.database = database;
+		addPost.functions = functions;
+		addPost.fileSystem = fileSystem;
+		addPost.requestModule = requestModule;
+		addPost.filter = filter;
+		addPost.ObjectId = ObjectId;
+
+		editPost.database = database;
+		editPost.functions = functions;
+		editPost.fileSystem = fileSystem;
+		editPost.requestModule = requestModule;
+		editPost.filter = filter;
+		editPost.ObjectId = ObjectId;
+
+		admin.database = database;
+		admin.bcrypt = bcrypt;
+		admin.jwt = jwt;
+		admin.ObjectId = ObjectId;
+		admin.fileSystem = fileSystem;
+		admin.mainURL = mainURL;
+
+		app.get("/signup", function (request, result) {
+			result.render("signup");
+		});
+
+		app.get("/forgot-password", function (request, result) {
+			result.render("forgot-password");
+		});
+
+		// --------------- Send Recover Link For The User ---------------------
+		app.post("/sendRecoveryLink", function (request, result) {
+
+			//Getting user inputted email address
+			var email = request.fields.email;
+			
+			//Finding is there any existing user in the database for a recovery
+			database.collection("users").findOne({
+				"email": email
+			}, function (error, user) {
+				if (user == null) {
+					result.json({
+						'status': "error",
+						'message': "Email does not exists."
+					});
+				} else {
+					var reset_token = new Date().getTime();
+					
+					database.collection("users").findOneAndUpdate({
+						"email": email
+					}, {
+						$set: {
+							"reset_token": reset_token
+						}
+					}, function (error, data) {
+						
+						var transporter = nodemailer.createTransport(nodemailerObject);
+
+						var text = "Please click the following link to reset your password: " + mainURL + "/ResetPassword/" + email + "/" + reset_token;
+						var html = "Please click the following link to reset your password: <br><br> <a href='" + mainURL + "/ResetPassword/" + email + "/" + reset_token + "'>Reset Password</a> <br><br> Thank you.";
+
+						transporter.sendMail({
+							from: nodemailerFrom,
+							to: email,
+							subject: "Reset Password",
+							text: text,
+							html: html
+						}, function (error, info) {
+							if (error) {
+								console.error(error);
+							} else {
+								console.log("Email sent: " + info.response);
+							}
+							
+							result.json({
+								'status': "success",
+								'message': 'Email has been sent with the link to recover the password.'
+							});
+						});
+						
+					});
+				}
+			});
+		});
+
 http.listen(3000, function () {
 	console.log("Server started at " + mainURL);
 
