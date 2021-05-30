@@ -7,7 +7,13 @@
 	<link rel="stylesheet" href="/public/css/style.css">
 	<link rel="stylesheet" href="/public/css/color.css">
 	<link rel="stylesheet" href="/public/css/responsive.css">
-
+<style>
+	body{
+		background-image: url(../public/img/nsbm\ wallpaper\ 2.jpg);
+		background-repeat: no-repeat;
+		background size: 100% 100%;
+	}
+</style>
 </head>
 <body>
 	<div class="theme-layout">
@@ -16,7 +22,13 @@
 				<div class="offset-md-3 col-md-6">
 					<div class="login-reg-bg">
 						<div class="log-reg-area sign">
-							<h2 class="log-title">Signup</h2>
+							<img 
+							src="../public/img/Green Connect Logo.png"
+							alt="GConnect logo"
+							style="width: 40%; position: relative;left: 7vw"
+							/>
+							<span style="position: relative;left: 9vw">
+							<h2 class="log-title">Signup</h2></span>
 
 							<form onsubmit="return doRegister(this);">
 								<div class="form-group">
@@ -34,6 +46,18 @@
 								<div class="form-group">
 									<input type="email" required name="email" />
 									<label class="control-label">Email</label>
+									<i class="mtrl-select"></i>
+								</div>
+
+								<div class="form-group">
+									<input type="text" required name="batch" />
+									<label class="control-label">Batch</label>
+									<i class="mtrl-select"></i>
+								</div>
+
+								<div class="form-group">
+									<input type="text" required name="faculty" />
+									<label class="control-label">Faculty</label>
 									<i class="mtrl-select"></i>
 								</div>
 
