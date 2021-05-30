@@ -43,8 +43,6 @@ var users = [];
 
 var mainURL = "http://localhost:3000";
 
-
-
 // --------------- Sender`s Email Configurations ---------------------
 var nodemailerFrom = "greenconnect101@gmail.com";
 var nodemailerObject = {
@@ -176,7 +174,6 @@ http.listen(3000, function () {
 			});
 		});
 
-
 		// --------------- Getting Resetting Token ---------------------
 		app.get("/ResetPassword/:email/:reset_token", function (request, result) {
 
@@ -189,86 +186,6 @@ http.listen(3000, function () {
 			});
 		});
 
-		// --------------- User Email Verfication ---------------------
-		app.get("/verifyEmail/:email/:verification_token", function (request, result) {
-
-			var email = request.params.email;
-			var verification_token = request.params.verification_token;
-
-			database.collection("users").findOne({
-				$and: [{
-					"email": email,
-				}, {
-					"verification_token": parseInt(verification_token)
-				}]
-			}, function (error, user) {
-				if (user == null) {
-					result.json({
-						'status': "error",
-						'message': 'Email does not exists. Or verification link is expired.'
-					});
-				} else {
-
-					database.collection("users").findOneAndUpdate({
-						$and: [{
-							"email": email,
-						}, {
-							"verification_token": parseInt(verification_token)
-						}]
-					}, {
-						$set: {
-							"verification_token": "",
-							"isVerified": true
-						}
-					}, function (error, data) {
-						result.json({
-							'status': "success",
-							'message': 'Account has been verified. Please try login.'
-						});
-					});
-				}
-			});
-		});
-		// --------------- User Email Verfication ---------------------
-		app.get("/verifyEmail/:email/:verification_token", function (request, result) {
-
-			var email = request.params.email;
-			var verification_token = request.params.verification_token;
-
-			database.collection("users").findOne({
-				$and: [{
-					"email": email,
-				}, {
-					"verification_token": parseInt(verification_token)
-				}]
-			}, function (error, user) {
-				if (user == null) {
-					result.json({
-						'status': "error",
-						'message': 'Email does not exists. Or verification link is expired.'
-					});
-				} else {
-
-					database.collection("users").findOneAndUpdate({
-						$and: [{
-							"email": email,
-						}, {
-							"verification_token": parseInt(verification_token)
-						}]
-					}, {
-						$set: {
-							"verification_token": "",
-							"isVerified": true
-						}
-					}, function (error, data) {
-						result.json({
-							'status': "success",
-							'message': 'Account has been verified. Please try login.'
-						});
-					});
-				}
-			});
-		});
 		// --------------- User Email Verfication ---------------------
 		app.get("/verifyEmail/:email/:verification_token", function (request, result) {
 
